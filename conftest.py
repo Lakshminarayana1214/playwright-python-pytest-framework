@@ -7,6 +7,8 @@ import pytest
 import pytest_html
 from dotenv import load_dotenv
 
+from api.api_client import APIClient
+
 load_dotenv()
 
 project_path = Path(__file__).resolve().parent
@@ -55,6 +57,29 @@ def customer_user_credentials():
         pytest.fail("set customer username and password in env variables")
 
     return customer_email, customer_pass
+
+@pytest.fixture(scope="session")
+def api_base_url():
+    url = os.getenv("API_BASE_URL")
+    if not url:
+        pytest.fail("Set API_BASE_URL in environment variables")
+    return url.rstrip("/")
+
+@pytest.fixture(scope="session")
+def api_client(api_base_url):
+    client = APIClient(api_base_url)
+    yield client
+    client.session.close()
+
+@pytest.fixture(scope="session")
+def admin_api_token(api_client, admin_user_credentials):
+    admin_email, admin_password = admin_user_credentials
+    login_payload = {"email": admin_email, "password": admin_password}
+    response = api_client.post("/users/login", login_payload)
+    assert response.status_code == 200, f"API login failed: {response.status_code} - {response.text}"
+    token_data  = response.json()
+    assert "access_token" in token_data
+    return token_data["access_token"]
 
 @pytest.fixture(scope="function")
 def app_page(page):
