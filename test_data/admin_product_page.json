@@ -1,0 +1,82 @@
+
+{
+  "scenario": "Admin page products validation",
+  "product_test_cases": [
+    {
+      "test_case": "TC_010",
+      "scenario": "Navigate to Admin Products section",
+      "expected_result": "Admin Products page should open successfully",
+       "expected_url": "/admin/products"
+    },
+    {
+      "test_case": "TC_011",
+      "scenario": "Verify product listing",
+      "expected_result": "Product records and table details should be displayed"
+    },
+    {
+      "test_case": "TC_012",
+      "scenario": "Verify product pagination",
+      "expected_result": "Next page should display another set of products"
+    },
+    {
+      "test_case": "TC_013",
+      "scenario": "Verify previous-page navigation",
+      "expected_result": "Previous product records should be displayed"
+    },
+    {
+      "test_case": "TC_014",
+      "scenario": "Search for an existing product",
+      "search_product": "Bolt Cutters",
+      "expected_result": "At least one matching product should be displayed"
+    },
+    {
+      "test_case": "TC_017",
+      "scenario": "Validate mandatory fields",
+      "expected_result": "Name, Description and Price required messages should be displayed"
+    },
+    {
+      "test_case": "TC_018",
+      "scenario": "Create a new product with valid details",
+      "expected_result": "Golder Hammer should be created successfully"
+    },
+    {
+      "test_case": "TC_019",
+      "scenario": "Verify newly created product information",
+      "expected_result": "Golder Hammer should appear in the Products listing"
+    },
+    {
+      "test_case": "TC_020",
+      "scenario": "Edit the newly created product",
+      "expected_result": "Golder Hammer details should be updated successfully"
+    },
+    {
+      "test_case": "TC_021",
+      "scenario": "Verify updated product information",
+      "expected_result": "Updated product name should appear in the Products listing"
+    }
+  ],
+  "valid_product": {
+    "name": "Golden Hammer",
+    "description": "A durable hammer created for testing the creating of the new product and this tool helps in the regular home needs ",
+    "stock": "50",
+    "price": "99",
+    "location_offer": true,
+    "item_for_rent": true,
+    "co2_rating": "None",
+    "brand": "ForgeFlex Tools",
+    "category": "Hammer",
+    "image": "Hammer"
+  },
+  "updated_product": {
+    "name": "Golden Hammer Updated",
+    "description": "Updated description for the Golden hammer details.",
+    "stock": 75,
+    "price": 109.99,
+    "location_offer": false,
+    "item_for_rent": false,
+    "co2_rating": "None",
+    "brand": "Tools",
+    "category": "Hammer",
+    "image": "Hammer"
+  }
+}

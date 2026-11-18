@@ -1,0 +1,33 @@
+{
+  "scenario": "Login Page Validation",
+  "login_validation_cases": [
+    {
+      "test_case": "TC_001",
+      "scenario": "Click on login button with empty credentials",
+      "email": "",
+      "password": "",
+      "expected_messages": ["Email is required","Password is required"]
+    },
+       {
+      "test_case": "TC_002",
+      "scenario": "Submit email without @ symbol",
+      "email": "customerlogin.com",
+      "password": "welcome1",
+      "expected_messages": ["Email format is invalid"]
+    },
+           {
+      "test_case": "TC_003",
+      "scenario": "Submit password with only two characters",
+      "email": "admin@practicesoftwaretesting.com",
+      "password": "th",
+      "expected_messages": ["Password length is invalid"]
+    },
+    {
+      "test_case": "TC_004",
+      "scenario": "Submit invalid email and password",
+      "email": "wronguserid@gmail.com",
+      "password": "wrongpassword",
+      "expected_messages": ["Invalid email or password"]
+    }
+  ]
+}
